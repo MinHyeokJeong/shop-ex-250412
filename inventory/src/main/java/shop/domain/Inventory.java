@@ -52,6 +52,8 @@ public class Inventory {
                 inventory.setStock(inventory.getStock() - orderPlaced.getQty());
             repository().save(inventory);
 
+            InventoryDecreased inventoryDecreased = new InventoryDecreased(inventory);
+            inventoryDecreased.publishAfterCommit();
          });         
 
 
