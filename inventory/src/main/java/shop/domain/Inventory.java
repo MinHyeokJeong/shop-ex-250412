@@ -27,9 +27,6 @@ public class Inventory {
     public void onPostPersist() {
         InventoryDecreased inventoryDecreased = new InventoryDecreased(this);
         inventoryDecreased.publishAfterCommit();
-
-        InventoryIncreased inventoryIncreased = new InventoryIncreased(this);
-        inventoryIncreased.publishAfterCommit();
     }
 
     public static InventoryRepository repository() {
@@ -48,18 +45,15 @@ public class Inventory {
         repository().save(inventory);
 
         */
-
-        /** Example 2:  finding and process
-        
-
-        repository().findById(orderPlaced.get???()).ifPresent(inventory->{
-            
-            inventory // do something
+ 
+        repository().findById(
+            Long.valueOf(orderPlaced.getProductId()))
+            .ifPresent(inventory->{
+                inventory.setStock(inventory.getStock() - orderPlaced.getQty());
             repository().save(inventory);
 
+         });         
 
-         });
-        */
 
     }
 
@@ -84,7 +78,12 @@ public class Inventory {
 
 
          });
+
+        InventoryIncreased inventoryIncreased = new InventoryIncreased(this);
+        inventoryIncreased.publishAfterCommit();
         */
+
+        
 
     }
     //>>> Clean Arch / Port Method

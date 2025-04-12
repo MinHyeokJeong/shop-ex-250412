@@ -33,7 +33,11 @@ public class Delivery {
     public void onPostPersist() {
         DeliveryStarted deliveryStarted = new DeliveryStarted(this);
         deliveryStarted.publishAfterCommit();
+    }
 
+    @PreRemove
+    public void onPreRemove()
+    {
         DeleveryCancle deleveryCancle = new DeleveryCancle(this);
         deleveryCancle.publishAfterCommit();
     }
@@ -48,12 +52,15 @@ public class Delivery {
     //<<< Clean Arch / Port Method
     public static void startDelivery(OrderPlaced orderPlaced) {
         //implement business logic here:
-
-        /** Example 1:  new item 
+    
         Delivery delivery = new Delivery();
+        //생성자로 만드는게 깔끔
+        delivery.setOrderId(orderPlaced.getId());
+        delivery.setCustomerId(orderPlaced.getCustomerId());
+        delivery.setAddress(orderPlaced.getAddress());
+        delivery.setStatus("DELIVERY STARTED");
         repository().save(delivery);
 
-        */
 
         /** Example 2:  finding and process
         
