@@ -8,10 +8,6 @@ const router = createRouter({
       component: () => import('../components/pages/Index.vue'),
     },
     {
-      path: '/orders',
-      component: () => import('../components/ui/OrderGrid.vue'),
-    },
-    {
       path: '/deliveries',
       component: () => import('../components/ui/DeliveryGrid.vue'),
     },

@@ -33,10 +33,6 @@ export default {
   data: () => ({
     cards: [
       {
-          text: "Order",
-          link: "/orders",
-      },
-      {
           text: "Delivery",
           link: "/deliveries",
       },

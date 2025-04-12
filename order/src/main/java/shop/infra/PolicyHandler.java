@@ -17,9 +17,6 @@ import shop.domain.*;
 @Transactional
 public class PolicyHandler {
 
-    @Autowired
-    OrderRepository orderRepository;
-
     @StreamListener(KafkaProcessor.INPUT)
     public void whatever(@Payload String eventString) {}
 }
