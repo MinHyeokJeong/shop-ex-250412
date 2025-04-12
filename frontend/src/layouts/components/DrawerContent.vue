@@ -8,12 +8,6 @@ import {
 <template>
     <ul>
         <VerticalNavSectionTitle :item="{ heading: 'Order' }" />
-        <VerticalNavLink
-            :item="{
-                title: 'Order',
-                to: '/orders',
-            }"
-        />
         <VerticalNavSectionTitle :item="{ heading: 'Delivery' }" />
         <VerticalNavLink
             :item="{

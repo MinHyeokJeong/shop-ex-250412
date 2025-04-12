@@ -35,7 +35,11 @@ public class Order {
     public void onPostPersist() {
         OrderPlaced orderPlaced = new OrderPlaced(this);
         orderPlaced.publishAfterCommit();
+    }
 
+    @PreRemove
+    public void onPreRemove()
+    {
         OrderCancle orderCancle = new OrderCancle(this);
         orderCancle.publishAfterCommit();
     }

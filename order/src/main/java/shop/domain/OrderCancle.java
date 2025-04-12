@@ -13,10 +13,6 @@ public class OrderCancle extends AbstractEvent {
 
     private Long id;
 
-    public OrderCancle(Order aggregate) {
-        super(aggregate);
-    }
-
     public OrderCancle() {
         super();
     }
